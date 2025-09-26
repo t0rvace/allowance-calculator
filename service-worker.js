@@ -1,7 +1,6 @@
 const CACHE_NAME = 'calculator-v1';
 const urlsToCache = [
   '/',
-  '/index.html',
   '/style.css',
   '/script.js',
   '/manifest.json',
