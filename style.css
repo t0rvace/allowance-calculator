@@ -100,3 +100,19 @@ button[type="submit"]:hover {
   font-size: 0.95rem;
   color: #555;
 }
+
+/* Sponsor / Logo section */
+.sponsor {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.sponsor-logo {
+  width: 120px;
+  height: auto;
+  margin-top: 0.5rem;
+  opacity: 0.9;
+}
+

@@ -12,7 +12,7 @@
 <body>
   <main>
 
-    <h1>Wide Body Allowance Calculator</h1>
+    <h1>TOD Allowance Calculator</h1>
     
     <form id="allowance-form">
      
@@ -27,11 +27,17 @@
         Hours:
         <input type="number" id="hours" required />
         Minutes:
-        <input type="number" id="minutes" required />
+        <input type="number" id="minutes" required min="0" max="59"/>
       </label>
 
       <button type="submit">Calculate</button>
     </form>
+
+    <div class="sponsor">
+       <p>Brought to you by...</p>
+       <img src="img/faanzlogo-transparent.png" alt="Company Logo" class="sponsor-logo" />
+    </div>
+
 
     <div id="result"></div>
   </main>
