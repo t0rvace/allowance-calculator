@@ -1,0 +1,18 @@
+{
+  "name": "Allowance Calculator",
+  "short_name": "TOD Calculator",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#1E1E2F",
+  "theme_color": "#6A0DAD",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "192x192",
+      "type": "img/ico"
+    }
+  ]
+}
+
+
+
