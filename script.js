@@ -1,33 +1,3 @@
-// 🔐 STEP 1: PIN Form Handling
-document.getElementById("pin-form").addEventListener("submit", async function (e) {
-  e.preventDefault();
-
-  const pin = document.getElementById("pin-input").value;
-  const errorEl = document.getElementById("error-msg");
-
-  try {
-    const response = await fetch("/.netlify/functions/validate-pin", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ pin }),
-    });
-
-    if (response.ok) {
-      // ✅ Unlock app
-      document.getElementById("auth-section").style.display = "none";
-      document.getElementById("main-app").style.display = "block";
-    } else {
-      const data = await response.json();
-      errorEl.textContent = data.message || "Access denied";
-    }
-  } catch (error) {
-    errorEl.textContent = "Something went wrong. Please try again.";
-    console.error("PIN check error:", error);
-  }
-});
-
 let rates = {};
 
 window.addEventListener('DOMContentLoaded', async () => {
