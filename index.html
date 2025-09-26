@@ -10,6 +10,24 @@
   
 </head>
 <body>
+
+  <div id="auth-section">
+    <h2>Enter PIN</h2>
+    <form id="pin-form">
+      <input
+        type="password"
+        id="pin-input"
+        maxlength="8"
+        pattern="\d{8}"
+        placeholder="Enter PIN"
+        required
+      />
+      <button type="submit">Unlock</button>
+    </form>
+    <p id="error-msg" style="color: red;"></p>
+  </div>
+
+  <div id="main-app" style="display: none;">
   <main>
 
     <h1>TOD Allowance Calculator</h1>
@@ -40,9 +58,10 @@
 
 
     <div id="result"></div>
+    
   </main>
+  </div>
 
-  
 
   <script src="script.js"></script>
   <script>
@@ -51,7 +70,7 @@
       .then(reg => console.log('SW registered', reg))
       .catch(err => console.error('SW registration failed', err));;
     }
-
+    
   </script>
 
 </body>
