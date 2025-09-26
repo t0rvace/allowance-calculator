@@ -3,13 +3,19 @@
   "short_name": "TOD Calculator",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#1E1E2F",
-  "theme_color": "#6A0DAD",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FFFFFF",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "img/favicon.ico",
       "sizes": "192x192",
       "type": "img/ico"
+    },
+
+    {
+      "src": "img/bg-main.png",
+      "sizes": "192x192",
+      "type": "img/png"
     }
   ]
 }

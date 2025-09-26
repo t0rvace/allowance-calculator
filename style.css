@@ -7,8 +7,7 @@
 
 body {
   font-family: Arial, sans-serif;
-  background: #f7f7f7;
-  background-image: url('img/wide-body.webp');
+  background-image: url('img/bg-main.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: scroll;  /* Creates parallax effect */
