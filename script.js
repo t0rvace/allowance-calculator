@@ -6,7 +6,7 @@ document.getElementById("pin-form").addEventListener("submit", async function (e
   const errorEl = document.getElementById("error-msg");
 
   try {
-    const response = await fetch("/.netlify/functions/val.js", {
+    const response = await fetch("/.netlify/functions/val", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
