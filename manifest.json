@@ -6,15 +6,16 @@
   "background_color": "#FFFFFF",
   "theme_color": "#FFFFFF",
   "icons": [
+    
+     {
+      "src": "img/android-icon.png",
+      "sizes": "512x512",
+      "type": "img/png"
+    },
+    
     {
       "src": "img/favicon.ico",
       "sizes": "192x192",
-      "type": "img/ico"
-    },
-
-     {
-      "src": "img/favicon.ico",
-      "sizes": "512x512",
       "type": "img/ico"
     },
 
