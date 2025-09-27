@@ -12,6 +12,12 @@
       "type": "img/ico"
     },
 
+     {
+      "src": "img/favicon.ico",
+      "sizes": "512x512",
+      "type": "img/ico"
+    },
+
     {
       "src": "img/fanzlogo-transparent.png",
       "sizes": "192x192",
