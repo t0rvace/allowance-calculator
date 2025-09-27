@@ -1,3 +1,16 @@
+// 👇 Splash Screen Logic
+window.addEventListener('load', () => {
+  const splash = document.getElementById('disclaimer-screen');
+
+  // Show the splash for 2 seconds (3000ms)
+  const delay = 2200;
+
+  setTimeout(() => {
+    splash.classList.add('fade-out');
+  }, delay);
+});
+
+// Rate Calculations
 let rates = {};
 
 window.addEventListener('DOMContentLoaded', async () => {

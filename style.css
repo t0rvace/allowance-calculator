@@ -101,7 +101,6 @@ button[type="submit"]:hover {
   color: #555;
 }
 
-/* Sponsor / Logo section */
 .sponsor {
   text-align: center;
   margin-top: 1.5rem;
@@ -114,5 +113,48 @@ button[type="submit"]:hover {
   height: auto;
   margin-top: 0.5rem;
   opacity: 0.9;
+}
+
+#disclaimer-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 1s ease, visibility 1s ease;
+}
+
+.disclaimer-message {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 600;              
+  font-size: 1.4rem;
+  color: #444;                   
+  text-align: center;
+  padding: 1.5em 2em;
+  line-height: 1.4;
+  font-style: italic;            
+  letter-spacing: 0.05em;       
+  text-transform: capitalize;    
+  max-width: 90vw;
+  box-sizing: border-box;
+  user-select: none;             
+}
+
+#disclaimer-screen.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
