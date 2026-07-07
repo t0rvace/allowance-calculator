@@ -61,6 +61,9 @@ select {
   border-radius: 5px;
   width: 100%;
   box-sizing: border-box;
+  max-width: 100%;
+  min-width: 0;
+  -webkit-appearance: none;
 }
 
 /* Checkbox alignment */
