@@ -1,48 +1,70 @@
-const CACHE_NAME = 'calculator-v2'; 
+const CACHE_NAME = 'calculator-v3';
 
 const urlsToCache = [
-  '/',  
-  '/index.html',            
-  '/style.css',             
-  '/script.js',             
-  '/manifest.json', 
-  '/rates.json',          
-  '/img/favicon.ico',       
+  '/',
+  '/index.html',
+  '/style.css',
+  '/script.js',
+  '/manifest.json',
+  '/rates.json',
+  '/img/favicon.ico',
   '/img/bg-main.png',
   '/img/faanzlogo-transparent.png',
   '/img/android-icon.png'
 ];
 
-// Install event: cache all files
+// Install event: cache app shell
 self.addEventListener('install', event => {
-  self.skipWaiting(); // Activate the new service worker immediately
+  self.skipWaiting();
+
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => {
-      return cache.addAll(urlsToCache);
-    })
+    caches.open(CACHE_NAME)
+      .then(cache => cache.addAll(urlsToCache))
   );
 });
 
-// Activate event: clean up old caches
+// Activate event: remove old caches and take control immediately
 self.addEventListener('activate', event => {
-  clients.claim(); // Take control of all clients right away
   event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (cacheName !== CACHE_NAME) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
+    Promise.all([
+      caches.keys().then(cacheNames =>
+        Promise.all(
+          cacheNames.map(cacheName => {
+            if (cacheName !== CACHE_NAME) {
+              return caches.delete(cacheName);
+            }
+          })
+        )
+      ),
+      self.clients.claim()
+    ])
   );
 });
 
-// Fetch event: serve from cache, fall back to network
+// Fetch event: Network first, cache fallback
 self.addEventListener('fetch', event => {
+  // Only handle GET requests
+  if (event.request.method !== 'GET') {
+    return;
+  }
+
   event.respondWith(
-    caches.match(event.request)
-      .then(response => response || fetch(event.request))
+    fetch(event.request)
+      .then(networkResponse => {
+        // Cache successful responses
+        if (networkResponse && networkResponse.status === 200) {
+          const responseClone = networkResponse.clone();
+
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, responseClone);
+          });
+        }
+
+        return networkResponse;
+      })
+      .catch(() => {
+        // If offline, return cached version
+        return caches.match(event.request);
+      })
   );
 });
