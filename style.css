@@ -203,14 +203,14 @@ button[type="submit"]:hover {
 .carousel-container {
   overflow:hidden;
   width:100%;
+  touch-action:pan-y;
+
 }
 
 .carousel-track {
 
   display:flex;
-
   transition:transform 0.35s ease;
-
   touch-action:pan-y;
 
 }
