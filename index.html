@@ -1,65 +1,260 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <title>Allowance Calculator</title>
+  <title>FAANZ Calculator</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
-  
+
 </head>
+
 <body>
 
+  <!-- Disclaimer Splash Screen -->
+
   <div id="disclaimer-screen">
-    <div class="disclaimer-message">The following is intended for FAANZ members' usage only</div>
+
+<div class="disclaimer-message">
+  The following is intended for FAANZ members' usage only
+</div>
+
   </div>
-  
+
   <main>
 
-    <h1>TOD Allowance Calculator</h1>
-    <div class="sponsor">
-       <p><i>Rates as of 1st of May 2026</i><br><br></p>
-    </div>
-    
-    <form id="allowance-form">
-     
-      <label>
-        Destination Port:
-        <select id="destination" required>
-            <option value="" disabled selected>Select Destination Port</option>
-        </select>
-      </label>
+<!-- Swipe Navigation -->
 
-      <label>
-        Hours:
-        <input type="number" id="hours" required />
-        Minutes:
-        <input type="number" id="minutes" required min="0" max="59"/>
-      </label>
+<div class="swipe-hint">
+  Swipe left or right to change calculators
+</div>
 
-      <button type="submit">Calculate</button>
-    </form>
+<div class="swipe-header">
 
-    <div class="sponsor">
-       <p>Brought to you by...</p>
-       <img src="img/faanzlogo-transparent.png" alt="Company Logo" class="sponsor-logo" />
-    </div>
+  <span id="swipe-left">←</span>
+
+  <p id="calculator-title">
+    TOD Allowance Calculator
+  </p>
+
+  <span id="swipe-right">→</span>
+
+</div>
+
+<!-- Calculator Carousel -->
+
+<div class="carousel-container">
 
 
-    <div id="result"></div>
-    
+  <div class="carousel-track">
+
+    <!-- TOD Allowance Calculator -->
+
+    <section class="calculator-page">
+
+
+      <form id="allowance-form">
+
+        <label>
+
+          Destination Port:
+
+          <select id="destination" required>
+
+            <option value="" disabled selected>
+              Select Destination Port
+            </option>
+
+          </select>
+
+
+        </label>
+
+        <label>
+
+          Hours:
+
+          <input type="number" 
+                 id="hours" 
+                 required 
+                 min="0" />
+
+          Minutes:
+
+          <input type="number" 
+                 id="minutes" 
+                 required 
+                 min="0" 
+                 max="59" />
+
+        </label>
+
+        <button type="submit">
+          Calculate
+        </button>
+
+        <button type="button" class="clear-button">
+          Clear
+        </button>
+
+      </form>
+
+    </section>
+
+    <!-- Day Trips Calculator -->
+
+    <section class="calculator-page">
+
+      <form id="day-trips-form">
+
+        <label>
+
+          Outbound Sector Time (Hours):
+
+          <input type="number" 
+                 id="hours-outbound" 
+                 required 
+                 min="0" />
+
+          Outbound Sector Time (Minutes):
+
+          <input type="number" 
+                 id="minutes-outbound" 
+                 required 
+                 min="0" 
+                 max="59" />
+
+        </label>
+
+         <label>
+
+          Inbound Sector Time (Hours):
+
+          <input type="number" 
+                 id="hours-inbound" 
+                 required 
+                 min="0" />
+
+          Inbound Sector Time (Minutes):
+
+          <input type="number" 
+                 id="minutes-inbound" 
+                 required 
+                 min="0" 
+                 max="59" />
+
+        </label>
+
+        <label>
+
+          Local Sign Off Time From Duty (HH:MM):
+
+          <input type="time" 
+                 id="end-duty-time" 
+                 required />
+        </label>
+
+        <button type="submit">
+          Calculate
+        </button>
+
+        <button type="button" class="clear-button">
+          Clear
+        </button>
+
+      </form>
+
+    </section>
+
+    <!-- Disruption Rest Calculator -->
+
+    <section class="calculator-page">
+
+      <form id="disruption-form">
+
+        <label>
+
+          Duty Time Hours:
+
+          <input type="number" 
+                 id="hours-duty" 
+                 required 
+                 min="12" 
+                 max="19" />
+
+          Duty Time Minutes:
+
+          <input type="number" 
+                 id="minutes-duty" 
+                 required 
+                 min="0" 
+                 max="59" />
+        </label>
+
+        <label>
+
+          Time of Arrival at Hotel (HH:MM):
+
+          <input type="time" 
+                 id="arrival-time" 
+                 required />
+        </label>
+
+        <button type="submit">
+          Calculate
+        </button>
+
+        <button type="button" class="clear-button">
+          Clear
+        </button>
+
+      </form>
+
+    </section>
+
+  </div>
+
+</div>
+
+<!-- Sponsor -->
+
+<div class="sponsor">
+
+  <p>
+    Brought to you by...
+  </p>
+
+  <img src="img/faanzlogo-transparent.png"
+       alt="Company Logo"
+       class="sponsor-logo" />
+
+</div>
+
+<!-- Results -->
+
+<div id="result"></div>
+
   </main>
 
   <script src="script.js"></script>
+
   <script>
+
+
     if ('serviceWorker' in navigator) {
+
       navigator.serviceWorker.register('service-worker.js')
       .then(reg => console.log('SW registered', reg))
-      .catch(err => console.error('SW registration failed', err));;
+      .catch(err => console.error('SW registration failed', err));
+
     }
-    
+
   </script>
 
 </body>
+
 </html>
