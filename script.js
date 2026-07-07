@@ -179,7 +179,7 @@ const title = document.getElementById("calculator-title");
 
 const titles = [
   "TOD Allowance Calculator",
-  "Day Trips Calculator",
+  "Day Trips Rest Calculator",
   "Disruption Rest Calculator"
 ];
 
