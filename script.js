@@ -173,6 +173,7 @@ document.getElementById('disruption-form').addEventListener('submit', function (
 // Calculator swipe carousel
 
 const track = document.querySelector(".carousel-track");
+const carousel = document.querySelector(".carousel-container");
 const pages = document.querySelectorAll(".calculator-page");
 const title = document.getElementById("calculator-title");
 
@@ -195,12 +196,17 @@ function updateCarousel(){
 
 }
 
+
+// Arrow navigation
+
 document.getElementById("swipe-left")
 .addEventListener("click",()=>{
 
   if(currentPage > 0){
+
     currentPage--;
     updateCarousel();
+
   }
 
 });
@@ -209,46 +215,64 @@ document.getElementById("swipe-left")
 document.getElementById("swipe-right")
 .addEventListener("click",()=>{
 
-  if(currentPage < pages.length-1){
+  if(currentPage < pages.length - 1){
+
     currentPage++;
     updateCarousel();
+
   }
 
 });
 
-// Touch swipe
+
+// Touch swipe navigation
+
 let startX = 0;
 
 
-track.addEventListener("touchstart",(e)=>{
+carousel.addEventListener("touchstart",(e)=>{
 
   startX = e.touches[0].clientX;
 
-});
+}, { passive: true });
 
-track.addEventListener("touchend",(e)=>{
 
-  let endX = e.changedTouches[0].clientX;
+carousel.addEventListener("touchend",(e)=>{
 
-  if(startX - endX > 50){
+  const endX = e.changedTouches[0].clientX;
 
-    if(currentPage < pages.length-1){
+  const swipeDistance = startX - endX;
+
+
+  // Swipe left (next calculator)
+
+  if(swipeDistance > 50){
+
+    if(currentPage < pages.length - 1){
+
       currentPage++;
       updateCarousel();
+
     }
 
   }
 
-  if(endX - startX > 50){
+
+  // Swipe right (previous calculator)
+
+  if(swipeDistance < -50){
 
     if(currentPage > 0){
+
       currentPage--;
       updateCarousel();
+
     }
 
   }
 
-});
+
+}, { passive: true });
 
 // Clear buttons
 
