@@ -104,7 +104,7 @@ document.getElementById('day-trips-form').addEventListener('submit', function (e
   signOffEnds.setHours(hours, minutes, 0, 0);
 
   // Add rest hours
-  signOffEnds.setHours(signOffEnds.getHours() + restAtHome);
+  signOffEnds.setMinutes(signOffEnds.getMinutes() + restAtHome);
 
   // Format result HH:MM
   const signOffEndsFormatted =
